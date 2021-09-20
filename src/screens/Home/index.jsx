@@ -19,6 +19,7 @@ import { MyInfo } from "../../components/MyInfo";
 import { MyCards } from "../../components/MyCards";
 import { MyInvoices } from "../../components/MyInvoices";
 import { MyPayments } from "../../components/MyPayments";
+import { Transfers } from "../../components/Transfers";
 
 
 
@@ -33,6 +34,8 @@ export function Home() {
                 return <MyInfo />
             case 2:
                 return <MyCards />
+            case 4:
+                return <Transfers />
             case 5:
                 return <MyPayments />
             case 6:
@@ -109,7 +112,10 @@ export function Home() {
                         </CardGrid>
                         <CardGrid
                             label="Transferências"
-                            toggleModal={() => { setModalVisibility(true) }}
+                            toggleModal={() => {
+                                setScreen(4)
+                                setModalVisibility(true)
+                            }}
                         >
                             <Image
                                 source={transfers}
@@ -121,9 +127,9 @@ export function Home() {
                     <View style={styles.wrapperCards}>
                         <CardGrid
                             label="Pagamentos"
-                            toggleModal={() => { 
+                            toggleModal={() => {
                                 setScreen(5)
-                                setModalVisibility(true) 
+                                setModalVisibility(true)
                             }}
                         >
                             <Image

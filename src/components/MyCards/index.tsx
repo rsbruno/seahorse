@@ -13,13 +13,13 @@ export function MyCards() {
             <Text style={styles.title}>Meus Cartões</Text>
             {cards.map((card) => {
                 return (
-                    <View style={styles.containerCards}>
+                    <View style={styles.containerCards} key={card.id}>
                         <FontAwesome
                             name="credit-card"
                             size={24}
                             color={theme.colors.primary} />
                         <View style={styles.divisor} />
-                        <BankCard card={card}/>
+                        <BankCard card={card} />
                     </View>
                 )
             })}
