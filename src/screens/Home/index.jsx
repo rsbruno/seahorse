@@ -1,4 +1,4 @@
-import React, { useState, ReactNode } from "react";
+import React, { useState, ReactNode,useEffect } from "react";
 import { View, Text, SafeAreaView, Image, Touchable, TouchableOpacity } from "react-native"
 import Gradient from "../../components/Gradient";
 import { theme } from "../../global/theme";
@@ -19,14 +19,20 @@ import { MyCards } from "../../components/MyCards";
 import { MyInvoices } from "../../components/MyInvoices";
 import { MyPayments } from "../../components/MyPayments";
 import { Transfers } from "../../components/Transfers";
+import { MaterialIcons } from '@expo/vector-icons';
 import { MyPix } from "../../components/MyPix";
+import { useNavigation } from "@react-navigation/core";
+import { useAuth } from "../../contexts/auth";
 
 
 
 export function Home() {
     const [sizeIcons, setSizeIcons] = useState(65)
     const [modalVisbility, setModalVisibility] = useState(false)
-    const [screen, setScreen] = useState(1)
+    const [screen, setScreen] = useState(1);
+    const navigation = useNavigation();
+    const {user} = useAuth();
+    const [name,setName] = useState(user.username || "")
 
     function ModalContent() {
         switch (screen) {
@@ -48,11 +54,29 @@ export function Home() {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.wrapperAll}>
+                <View style={styles.wrapperGoBack}>
+                    <TouchableOpacity
+                        style={styles.buttonGoBack}
+                        activeOpacity={.4}
+                        onPress={() => {
+                            if (navigation.canGoBack())
+                                navigation.goBack()
+                        }}
+                    >
+                        <MaterialIcons
+                            name="arrow-back-ios"
+                            size={24}
+                            color="black"
+                        />
+                        <Text style={styles.textGoBack}>voltar</Text>
+                    </TouchableOpacity>
+
+                </View>
                 <View style={styles.wrapperUser}>
                     <View>
                         <Text style={styles.textWelcome}>
                             Olá,{"\n"}
-                            <Text style={styles.textName}>Bruno</Text>
+                            <Text style={styles.textName}>{name}</Text>
                         </Text>
                     </View>
 
@@ -105,9 +129,9 @@ export function Home() {
                     <View style={styles.wrapperCards}>
                         <CardGrid
                             label="Fazer Pix"
-                            toggleModal={() => { 
+                            toggleModal={() => {
                                 setScreen(3)
-                                setModalVisibility(true) 
+                                setModalVisibility(true)
                             }}
                         >
                             <Pix

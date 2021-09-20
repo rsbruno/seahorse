@@ -1,22 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View, Image } from "react-native";
 import { theme } from "../../global/theme";
 import { ButtonRedWithText } from "../ButtonRedWithText";
 import Gradient from "../Gradient";
 import styles from "./styles";
 import avatar from "../../assets/png/man.png"
+import { useAuth } from "../../contexts/auth";
+import { StatusBar } from "expo-status-bar";
 
 type MyInfoProps = {
     handleModal: () => void
 }
 
 export function MyInfo({ handleModal }: MyInfoProps) {
+
+    const {user} = useAuth();
+    const [name,setName] = useState(user.username || "")
+
     return (
 
         <View style={styles.wrapperMe}>
             <View style={styles.containerMe}>
                 <View>
-                    <Text style={styles.textNameMe}>Bruno Santos</Text>
+                    <Text style={styles.textNameMe}>{name}</Text>
                     <Text style={styles.textMe}>
                         <Text style={styles.textBold}>Ag: </Text>
                         1234-5
@@ -66,6 +72,10 @@ export function MyInfo({ handleModal }: MyInfoProps) {
                     R$ 5236,99
                 </Text>
             </View>
+
+            <StatusBar
+                style="dark"
+            />
         </View>
     )
 }

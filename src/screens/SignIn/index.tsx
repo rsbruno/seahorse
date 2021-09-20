@@ -19,6 +19,8 @@ import ForgotPasswordModal from "../../components/ForgotPasswordModal";
 import SuccesForgotModal from "../../components/SuccessForgotModal";
 import { SimpleCard } from "../../components/SimpleCard";
 
+import { useNavigation } from "@react-navigation/core";
+
 export function SignIn() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -27,11 +29,15 @@ export function SignIn() {
     const [isForgot, setIsForgot] = useState(true);
     const [visibleModal, setVisibleModal] = useState(false);
     const { setUser } = useAuth();
+    const navigation = useNavigation()
 
     function handleLogin() {
         setUser({ id: "1", username })
         setIsLoading(true)
-        setTimeout(() => { setIsLoading(false) }, 2000)
+        setTimeout(() => { 
+            setIsLoading(false) 
+            navigation.navigate('Home' as never);
+        }, 2000)
     }
 
     function forgotPassword() {

@@ -2,6 +2,17 @@ import { StyleSheet, Platform, StatusBar } from "react-native";
 import { theme } from "../../global/theme";
 
 const styles = StyleSheet.create({
+    textGoBack:{
+        fontFamily:theme.fonts.title700,
+        fontSize:18
+    },
+    wrapperGoBack:{
+        marginBottom:12
+    },
+    buttonGoBack:{
+        flexDirection:"row", 
+        alignItems:"center",
+    },
     containerButtonModal:{
         width: "90%"
     },
