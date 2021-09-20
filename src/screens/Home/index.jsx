@@ -17,6 +17,7 @@ import ButtonWithText from "../../components/ButtonWithText";
 import { ButtonRedWithText } from "../../components/ButtonRedWithText";
 import { MyInfo } from "../../components/MyInfo";
 import { MyCards } from "../../components/MyCards";
+import { MyInvoices } from "../../components/MyInvoices";
 
 export function Home() {
     const [sizeIcons, setSizeIcons] = useState(65)
@@ -122,7 +123,8 @@ export function Home() {
             <CustomModal visible={modalVisbility}>
                 <View style={styles.wrapperContentModal}>
                     {/* <MyInfo handleModal={() => { setModalVisibility(false) }} /> */}
-                    <MyCards />
+                    {/* <MyCards /> */}
+                    <MyInvoices />
                     <View style={styles.containerButtonModal}>
                         <ButtonRedWithText
                             label="Fechar"

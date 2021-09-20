@@ -1,0 +1,41 @@
+[{
+        "name": "Supermercado ABC",
+        "hour": "10:20",
+        "value": 300,
+        "installments": 2,
+        "type": 1,
+        "id": 1
+    },
+    {
+        "name": "StockCar Oficina",
+        "hour": "13:09",
+        "value": 1560.80,
+        "installments": 6,
+        "type": 2,
+        "id": 2
+    },
+    {
+        "name": "Lanchonete Pão na Chapa",
+        "hour": "22:14",
+        "value": 36.20,
+        "installments": 1,
+        "type": 3,
+        "id": 3
+    },
+    {
+        "name": "Supermercado ABC",
+        "hour": "17:26",
+        "value": 25.0,
+        "installments": 1,
+        "type": 1,
+        "id": 4
+    },
+    {
+        "name": "Padaria Pão Quente",
+        "hour": "08:00",
+        "value": 24.80,
+        "installments": 1,
+        "type": 1,
+        "id": 5
+    }
+]
