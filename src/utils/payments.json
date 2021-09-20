@@ -1,0 +1,29 @@
+[{
+        "status": false,
+        "title": "Conta de Luz - CEMIG",
+        "value": 150,
+        "date": "25/09/2021",
+        "id": "1"
+    },
+    {
+        "status": false,
+        "title": "Conta de água - Copasa",
+        "value": 80.52,
+        "date": "25/09/2021",
+        "id": "2"
+    },
+    {
+        "status": true,
+        "title": "Streaming de Filmes",
+        "value": 20.00,
+        "date": "11/09/2021",
+        "id": "3"
+    },
+    {
+        "status": true,
+        "title": "Conta de Internet",
+        "value": 100.00,
+        "date": "05/09/2021",
+        "id": "4"
+    }
+]

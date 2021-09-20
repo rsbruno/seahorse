@@ -16,6 +16,11 @@ export type InvoiceProps = {
 }
 
 export function MyInvoices() {
+    const total = invoices.reduce(getTotal, 0);
+    function getTotal(total: number, item: InvoiceProps) {
+        return total + (item.value);
+    }
+
     return (
         <View style={styles.wrapperModal}>
             <Text style={styles.titleModal}>Minhas Faturas</Text>
@@ -28,6 +33,11 @@ export function MyInvoices() {
                         />
                     );
                 })}
+            </View>
+
+            <View style={styles.wrapperTotal}>
+                <Text style={styles.totalText}>Total</Text>
+                <Text style={styles.totalValue}>R$ {total.toFixed(2)}</Text>
             </View>
 
         </View>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, ReactNode } from "react";
 import { View, Text, SafeAreaView, Image, Touchable, TouchableOpacity } from "react-native"
 import Gradient from "../../components/Gradient";
 import { theme } from "../../global/theme";
@@ -18,10 +18,27 @@ import { ButtonRedWithText } from "../../components/ButtonRedWithText";
 import { MyInfo } from "../../components/MyInfo";
 import { MyCards } from "../../components/MyCards";
 import { MyInvoices } from "../../components/MyInvoices";
+import { MyPayments } from "../../components/MyPayments";
+
+
 
 export function Home() {
     const [sizeIcons, setSizeIcons] = useState(65)
     const [modalVisbility, setModalVisibility] = useState(false)
+    const [screen, setScreen] = useState(1)
+
+    function ModalContent() {
+        switch (screen) {
+            case 1:
+                return <MyInfo />
+            case 2:
+                return <MyCards />
+            case 5:
+                return <MyPayments />
+            case 6:
+                return <MyInvoices />
+        }
+    }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -56,7 +73,10 @@ export function Home() {
                     <View style={styles.wrapperCards}>
                         <CardGrid
                             label="Meus Dados"
-                            toggleModal={() => { setModalVisibility(true) }}
+                            toggleModal={() => {
+                                setScreen(1)
+                                setModalVisibility(true)
+                            }}
                         >
                             <FontAwesome
                                 name="id-card-o"
@@ -65,7 +85,10 @@ export function Home() {
                         </CardGrid>
                         <CardGrid
                             label="Meus Cartões"
-                            toggleModal={() => { setModalVisibility(true) }}
+                            toggleModal={() => {
+                                setScreen(2)
+                                setModalVisibility(true)
+                            }}
                         >
                             <Ionicons
                                 name="ios-card-outline"
@@ -98,7 +121,10 @@ export function Home() {
                     <View style={styles.wrapperCards}>
                         <CardGrid
                             label="Pagamentos"
-                            toggleModal={() => { setModalVisibility(true) }}
+                            toggleModal={() => { 
+                                setScreen(5)
+                                setModalVisibility(true) 
+                            }}
                         >
                             <Image
                                 source={barcode}
@@ -107,7 +133,10 @@ export function Home() {
                         </CardGrid>
                         <CardGrid
                             label="Minhas Faturas"
-                            toggleModal={() => { setModalVisibility(true) }}
+                            toggleModal={() => {
+                                setScreen(6)
+                                setModalVisibility(true)
+                            }}
                         >
                             <Ionicons
                                 name="newspaper-outline"
@@ -122,9 +151,9 @@ export function Home() {
 
             <CustomModal visible={modalVisbility}>
                 <View style={styles.wrapperContentModal}>
-                    {/* <MyInfo handleModal={() => { setModalVisibility(false) }} /> */}
-                    {/* <MyCards /> */}
-                    <MyInvoices />
+                    {/* Esta função devolve um component */}
+                    {ModalContent(1)}
+
                     <View style={styles.containerButtonModal}>
                         <ButtonRedWithText
                             label="Fechar"

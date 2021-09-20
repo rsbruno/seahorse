@@ -66,11 +66,6 @@ export function MyInfo({ handleModal }: MyInfoProps) {
                     R$ 5236,99
                 </Text>
             </View>
-
-            <ButtonRedWithText
-                label="Ok"
-                handleState={handleModal}
-            />
         </View>
     )
 }
