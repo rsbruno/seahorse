@@ -1,0 +1,22 @@
+[{
+        "type": "Cartão de Crédito - Físico",
+        "numberCard": "**** **** **** 2952",
+        "date": "07/2022",
+        "invoice": 0,
+        "limit": 5000
+    },
+    {
+        "type": "Cartão de Crédito - Virtual",
+        "numberCard": "**** **** **** 2895",
+        "date": "08/2023",
+        "invoice": 250,
+        "limit": 1500
+    },
+    {
+        "type": "Cartão de Débito - Físico",
+        "numberCard": "**** **** **** 2953",
+        "date": "08/2024",
+        "invoice": 0,
+        "limit": 0
+    }
+]

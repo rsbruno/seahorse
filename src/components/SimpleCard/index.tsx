@@ -1,16 +1,23 @@
-import React from "react"
-import { Text, View } from "react-native";
+import React, { ReactNode } from "react"
+import { Text, TouchableOpacity, View } from "react-native";
 
 import styles from "./styles"
-import Pix from "../../assets/pix.svg"
 
-export function SimpleCard() {
+type SimpleCardProps = {
+    children: ReactNode,
+    title?: string
+}
+
+export function SimpleCard({ children, title }: SimpleCardProps) {
     return (
-        <View style={styles.wrapperCard}>
-            <View>
-                <Pix width={55} height={55} />
-                <Text style={styles.descriptionCard}>Pix</Text>
+        <TouchableOpacity
+            style={styles.wrapperCard}
+            activeOpacity={.6}
+        >
+            <View style={styles.contentCard}>
+                {children}
+                <Text style={styles.descriptionCard}>{title}</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 }

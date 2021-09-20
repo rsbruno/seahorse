@@ -1,18 +1,20 @@
 import React, { ReactNode } from 'react';
-import { Text, View } from 'react-native';
+import { ViewProps } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from './styles';
 
-type GradientProps = {
+type GradientProps = ViewProps & {
     children: ReactNode,
     colors: string[]
 }
 
-export default function Gradient({ children, colors }: GradientProps) {
+export default function Gradient(props: GradientProps) {
+    const { children, colors:arrColors } = props;
     return (
         <LinearGradient
-            colors={colors}
-            style={styles.container}
+            {...props}
+            colors={arrColors}
+            style={[styles.container,props.style]}
         >
             {children}
         </LinearGradient >

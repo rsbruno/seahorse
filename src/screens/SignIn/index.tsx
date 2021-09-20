@@ -1,6 +1,6 @@
 import React from "react"
 import { useState } from "react";
-import { View, Text, ActivityIndicator, TouchableOpacity } from "react-native"
+import { View, Text, ActivityIndicator, TouchableOpacity, Image } from "react-native"
 import ButtonWithText from "../../components/ButtonWithText";
 import Gradient from "../../components/Gradient";
 import CustomTextInput from "../../components/Inputs/Text";
@@ -79,8 +79,14 @@ export function SignIn() {
                 </View>
 
                 <View style={styles.footerCards}>
-                    <SimpleCard></SimpleCard>
-                    <SimpleCard></SimpleCard>
+                    <SimpleCard title="Pix">
+                        <Pix width={55} height={55} />
+                    </SimpleCard>
+                    <SimpleCard title="Pagamentos">
+                        <Image source={Barcode}
+                            style={{ width: 55, height: 55 }}
+                        />
+                    </SimpleCard>
 
                 </View>
 

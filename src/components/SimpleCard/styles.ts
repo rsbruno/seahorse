@@ -2,6 +2,10 @@ import { StyleSheet } from "react-native"
 import { theme } from "../../global/theme";
 
 const styles = StyleSheet.create({
+    contentCard:{
+        justifyContent:"center",
+        alignItems:"center"
+    },
     descriptionCard:{
         color: theme.colors.textHightLight,
         textAlign:"center",
@@ -10,7 +14,7 @@ const styles = StyleSheet.create({
         marginTop:12
     },
     wrapperCard:{
-        width: 85,
+        width: 115,
         height: 85,
         marginHorizontal:12,
         borderLeftColor:theme.colors.textHightLight,
