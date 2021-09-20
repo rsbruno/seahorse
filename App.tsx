@@ -8,7 +8,7 @@ import {
 } from '@expo-google-fonts/rajdhani';
 
 import { AuthProvider } from './src/contexts/auth';
-import {Routes} from './src/routes/index.routes';
+import { Routes } from './src/routes/index.routes';
 import AppLoading from 'expo-app-loading';
 
 export default function App() {
@@ -22,8 +22,10 @@ export default function App() {
     return <AppLoading />;
 
   return (
-    <AuthProvider>
-      <Routes/>
-    </AuthProvider>
+    <>
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
+    </>
   );
 }
