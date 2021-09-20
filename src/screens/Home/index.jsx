@@ -13,13 +13,13 @@ import Pix from "../../assets/pix.svg"
 import transfers from "../../assets/png/transfers.png"
 import barcode from "../../assets/png/barcode.png"
 import { CustomModal } from "../../components/Modal/Index";
-import ButtonWithText from "../../components/ButtonWithText";
 import { ButtonRedWithText } from "../../components/ButtonRedWithText";
 import { MyInfo } from "../../components/MyInfo";
 import { MyCards } from "../../components/MyCards";
 import { MyInvoices } from "../../components/MyInvoices";
 import { MyPayments } from "../../components/MyPayments";
 import { Transfers } from "../../components/Transfers";
+import { MyPix } from "../../components/MyPix";
 
 
 
@@ -34,6 +34,8 @@ export function Home() {
                 return <MyInfo />
             case 2:
                 return <MyCards />
+            case 3:
+                return <MyPix />
             case 4:
                 return <Transfers />
             case 5:
@@ -103,7 +105,10 @@ export function Home() {
                     <View style={styles.wrapperCards}>
                         <CardGrid
                             label="Fazer Pix"
-                            toggleModal={() => { setModalVisibility(true) }}
+                            toggleModal={() => { 
+                                setScreen(3)
+                                setModalVisibility(true) 
+                            }}
                         >
                             <Pix
                                 width={sizeIcons}
@@ -168,10 +173,6 @@ export function Home() {
                     </View>
 
                 </View>
-
-
-
-
             </CustomModal>
 
         </SafeAreaView>
