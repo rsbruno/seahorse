@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     },
     wrapperMe: {
         backgroundColor: theme.colors.backgroundLight,
-        width: "70%",
+        width: "90%",
         paddingHorizontal:12,
         paddingVertical:16,
         borderRadius:6
