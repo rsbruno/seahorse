@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { theme } from '../../global/theme';
-import { AntDesign } from '@expo/vector-icons';
-import styles from './styles'
 
+import { AntDesign } from '@expo/vector-icons';
 import { InvoiceProps } from '../MyInvoices';
+import { theme } from '../../global/theme';
+import styles from './styles'
 
 type InvoicesCardProps = {
     invoice: InvoiceProps

@@ -1,5 +1,6 @@
-import React, { useState, ReactNode } from 'react';
-import { Modal,} from 'react-native';
+import React, { ReactNode } from 'react';
+import { Modal, } from 'react-native';
+
 import styles from './styles'
 
 type ModalProps = {

@@ -1,31 +1,35 @@
-import React, { useState, ReactNode, useEffect } from "react";
-import { View, Text, SafeAreaView, Image, Touchable, TouchableOpacity, StatusBar } from "react-native"
-import Gradient from "../../components/Gradient";
-import { theme } from "../../global/theme";
-import styles from "./styles";
+import React, { useState } from "react";
+import {
+    View,
+    Text,
+    ImageBackground,
+    Image,
+    TouchableOpacity,
+    StatusBar
+} from "react-native"
 
-import avatar from "../../assets/png/man.png"
-
-import { FontAwesome } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
-import { CardGrid } from "../../components/CardGrid";
-import Pix from "../../assets/pix.svg"
-import transfers from "../../assets/png/transfers.png"
-import barcode from "../../assets/png/barcode.png"
-import { CustomModal } from "../../components/Modal/Index";
 import { ButtonRedWithText } from "../../components/ButtonRedWithText";
-import { MyInfo } from "../../components/MyInfo";
-import { MyCards } from "../../components/MyCards";
+import { CustomModal } from "../../components/Modal/Index";
 import { MyInvoices } from "../../components/MyInvoices";
 import { MyPayments } from "../../components/MyPayments";
 import { Transfers } from "../../components/Transfers";
-import { MaterialIcons } from '@expo/vector-icons';
-import { MyPix } from "../../components/MyPix";
+import transfers from "../../assets/png/transfers.png";
 import { useNavigation } from "@react-navigation/core";
+import { CardGrid } from "../../components/CardGrid";
+import barcode from "../../assets/png/barcode.png";
+import { MaterialIcons } from '@expo/vector-icons';
+import { MyCards } from "../../components/MyCards";
+import { FontAwesome } from '@expo/vector-icons';
+import Gradient from "../../components/Gradient";
+import { MyInfo } from "../../components/MyInfo";
+import cifrao from "../../assets/png/cifrao.png";
+import { MyPix } from "../../components/MyPix";
+import { Ionicons } from '@expo/vector-icons';
+import avatar from "../../assets/png/man.png";
 import { useAuth } from "../../contexts/auth";
-// import { StatusBar } from "expo-status-bar"
-
-
+import { theme } from "../../global/theme";
+import Pix from "../../assets/svg/pix.svg";
+import styles from "./styles";
 
 export function Home() {
     const [sizeIcons, setSizeIcons] = useState(65)
@@ -34,6 +38,11 @@ export function Home() {
     const navigation = useNavigation();
     const { user } = useAuth();
     const [name, setName] = useState(user.username || "")
+
+    function handleCardGrid(component = 1) {
+        setScreen(component)
+        setModalVisibility(true)
+    }
 
     function ModalContent() {
         switch (screen) {
@@ -57,7 +66,10 @@ export function Home() {
             <StatusBar
                 hidden
             />
-            <View style={styles.container}>
+            <ImageBackground
+                style={styles.container}
+                source={cifrao}
+            >
                 <View style={styles.wrapperAll}>
                     <View style={styles.wrapperGoBack}>
                         <TouchableOpacity
@@ -108,20 +120,19 @@ export function Home() {
                             <CardGrid
                                 label="Meus Dados"
                                 toggleModal={() => {
-                                    setScreen(1)
-                                    setModalVisibility(true)
+                                    handleCardGrid(1)
                                 }}
                             >
                                 <FontAwesome
                                     name="id-card-o"
                                     size={sizeIcons}
-                                    color={theme.colors.backgroundLight} />
+                                    color={theme.colors.backgroundLight}
+                                />
                             </CardGrid>
                             <CardGrid
                                 label="Meus Cartões"
                                 toggleModal={() => {
-                                    setScreen(2)
-                                    setModalVisibility(true)
+                                    handleCardGrid(2)
                                 }}
                             >
                                 <Ionicons
@@ -135,8 +146,7 @@ export function Home() {
                             <CardGrid
                                 label="Fazer Pix"
                                 toggleModal={() => {
-                                    setScreen(3)
-                                    setModalVisibility(true)
+                                    handleCardGrid(3)
                                 }}
                             >
                                 <Pix
@@ -147,8 +157,7 @@ export function Home() {
                             <CardGrid
                                 label="Transferências"
                                 toggleModal={() => {
-                                    setScreen(4)
-                                    setModalVisibility(true)
+                                    handleCardGrid(4)
                                 }}
                             >
                                 <Image
@@ -162,8 +171,7 @@ export function Home() {
                             <CardGrid
                                 label="Pagamentos"
                                 toggleModal={() => {
-                                    setScreen(5)
-                                    setModalVisibility(true)
+                                    handleCardGrid(5)
                                 }}
                             >
                                 <Image
@@ -174,8 +182,7 @@ export function Home() {
                             <CardGrid
                                 label="Minhas Faturas"
                                 toggleModal={() => {
-                                    setScreen(6)
-                                    setModalVisibility(true)
+                                    handleCardGrid(6)
                                 }}
                             >
                                 <Ionicons
@@ -184,24 +191,21 @@ export function Home() {
                                     color={theme.colors.backgroundLight} />
                             </CardGrid>
                         </View>
-
-
                     </View>
                 </View>
-            </View>
+            </ImageBackground>
+            
             <CustomModal visible={modalVisbility}>
                 <View style={styles.wrapperContentModal}>
-                    {ModalContent(1)}
+                    {ModalContent()}
                     <View style={styles.containerButtonModal}>
                         <ButtonRedWithText
                             label="Fechar"
                             handleState={() => { setModalVisibility(false) }}
                         />
                     </View>
-
                 </View>
             </CustomModal>
-
         </>
     );
 }

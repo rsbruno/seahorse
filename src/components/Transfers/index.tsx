@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { TitleModal } from '../TitleModal';
+
 import { FontAwesome } from '@expo/vector-icons';
-import styles from './styles'
 import { theme } from '../../global/theme';
+import { TitleModal } from '../TitleModal';
+import styles from './styles'
+
 export function Transfers() {
     return (
         <View style={styles.wrapperContent}>

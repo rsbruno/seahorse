@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { ViewProps } from 'react-native';
+
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from './styles';
 

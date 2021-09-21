@@ -1,11 +1,9 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import styles from './styles';
 
-import { theme } from '../../global/theme';
+import invoices from "../../utils/invoices.json";
 import { InvoicesCard } from '../InvoicesCard';
-
-import invoices from "../../utils/invoices.json"
+import styles from './styles';
 
 export type InvoiceProps = {
     name: string,
@@ -17,6 +15,7 @@ export type InvoiceProps = {
 
 export function MyInvoices() {
     const total = invoices.reduce(getTotal, 0);
+    
     function getTotal(total: number, item: InvoiceProps) {
         return total + (item.value);
     }

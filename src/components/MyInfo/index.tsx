@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { Text, View, Image } from "react-native";
-import { theme } from "../../global/theme";
-import { ButtonRedWithText } from "../ButtonRedWithText";
-import Gradient from "../Gradient";
-import styles from "./styles";
-import avatar from "../../assets/png/man.png"
+
 import { useAuth } from "../../contexts/auth";
+import avatar from "../../assets/png/man.png";
 import { StatusBar } from "expo-status-bar";
+import { theme } from "../../global/theme";
+import styles from "./styles";
+import Gradient from "../Gradient";
 
 type MyInfoProps = {
-    handleModal: () => void
+    handleModal?: () => void
 }
 
 export function MyInfo({ handleModal }: MyInfoProps) {
@@ -18,7 +18,6 @@ export function MyInfo({ handleModal }: MyInfoProps) {
     const [name,setName] = useState(user.username || "")
 
     return (
-
         <View style={styles.wrapperMe}>
             <View style={styles.containerMe}>
                 <View>

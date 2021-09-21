@@ -1,11 +1,12 @@
-import { FontAwesome } from "@expo/vector-icons";
 import React from "react";
 import { View, Text } from "react-native";
+
+import { FontAwesome } from "@expo/vector-icons";
 import { theme } from "../../global/theme";
+import cards from "../../utils/cards.json"
 import { BankCard } from "../BankCard";
 import styles from "./styles"
 
-import cards from "../../utils/cards.json"
 
 export function MyCards() {
     return (
@@ -23,7 +24,6 @@ export function MyCards() {
                     </View>
                 )
             })}
-
         </View>
     );
 }

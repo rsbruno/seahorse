@@ -1,5 +1,6 @@
 import React,{ ReactNode } from 'react';
 import { View, Text } from 'react-native';
+
 import { theme } from '../../global/theme';
 import Gradient from '../Gradient';
 import styles from './styles'

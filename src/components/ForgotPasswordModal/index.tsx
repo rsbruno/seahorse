@@ -1,27 +1,30 @@
 import React, { useState } from "react"
-import { View, Text, TouchableOpacity, TextInput,ActivityIndicator} from "react-native"
+import {
+    View,
+    Text,
+    TouchableOpacity,
+    TextInput, ActivityIndicator
+} from "react-native"
+
 import { theme } from "../../global/theme";
 import styles from "./styles"
-
-
 
 type ForgotPasswordModalProps = {
     handleEmail: (e: string) => void;
     setForgot: () => void;
 }
 
-
 export default function ForgotPasswordModal({ handleEmail, setForgot }: ForgotPasswordModalProps) {
     const [isLoadingForgot, setIsLoadingForgot] = useState(false);
-    
-    function handleForgot(){
+
+    function handleForgot() {
         setIsLoadingForgot(true)
         setTimeout(() => {
             setIsLoadingForgot(false)
             setForgot()
-        }, 2000);
+        }, theme.animations.time);
     }
-    
+
     return (
         <View style={styles.contentInput}>
             <Text style={styles.textForgotModal}>
@@ -40,7 +43,7 @@ export default function ForgotPasswordModal({ handleEmail, setForgot }: ForgotPa
                 onPress={() => { handleForgot() }}
                 activeOpacity={.6}
                 style={styles.buttonForgotModal}
-                disabled={isLoadingForgot}    
+                disabled={isLoadingForgot}
             >
 
                 {isLoadingForgot
@@ -49,10 +52,8 @@ export default function ForgotPasswordModal({ handleEmail, setForgot }: ForgotPa
                         style={styles.buttonTextForgotModal}
                     >trocar senha</Text>
                 }
-
+                
             </TouchableOpacity>
-
-
         </View>
     )
 }

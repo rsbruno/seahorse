@@ -1,14 +1,14 @@
 import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
-import { theme } from '../../global/theme';
-import Gradient from '../Gradient';
-import { TitleModal } from '../TitleModal';
-import styles from './styles'
-import { Feather } from '@expo/vector-icons';
-import { CardsSelect } from '../CardsSelect';
-import { Ionicons } from '@expo/vector-icons';
+
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
+import { CardsSelect } from '../CardsSelect';
+import { theme } from '../../global/theme';
+import { TitleModal } from '../TitleModal';
+import styles from './styles'
 
 export function MyPix() {
     return (
@@ -86,7 +86,6 @@ export function MyPix() {
                     </Text>
                 </View>
             </View>
-
         </View>
     );
 }

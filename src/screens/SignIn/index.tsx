@@ -1,28 +1,29 @@
-import React from "react"
-import { useState } from "react";
-import { View, Text, ActivityIndicator, TouchableOpacity, Image, Keyboard } from "react-native"
-import ButtonWithText from "../../components/ButtonWithText";
-import Gradient from "../../components/Gradient";
-import CustomTextInput from "../../components/Inputs/Text";
-import { CustomModal } from "../../components/Modal/Index";
-import { useAuth } from "../../contexts/auth";
+import React, { useEffect, useState } from "react"
+import {
+    View,
+    Text,
+    ActivityIndicator,
+    TouchableOpacity,
+    Image,
+    Keyboard
+} from "react-native"
 
-import { AntDesign } from '@expo/vector-icons';
-
-import { StatusBar } from "expo-status-bar";
-
-import Pix from "../../assets/pix.svg"
-import Barcode from "../../assets/barcode.png"
-
-import styles from "./styles";
 import ForgotPasswordModal from "../../components/ForgotPasswordModal";
 import SuccesForgotModal from "../../components/SuccessForgotModal";
+import ButtonWithText from "../../components/ButtonWithText";
+import CustomTextInput from "../../components/Inputs/Text";
+import { CustomModal } from "../../components/Modal/Index";
 import { SimpleCard } from "../../components/SimpleCard";
-
 import { useNavigation } from "@react-navigation/core";
-
-import logo from "../../assets/png/logo.png"
-import { useEffect } from "react";
+import Gradient from "../../components/Gradient";
+import Barcode from "../../assets/png/barcode.png";
+import { AntDesign } from '@expo/vector-icons';
+import { useAuth } from "../../contexts/auth";
+import logo from "../../assets/png/logo.png";
+import { StatusBar } from "expo-status-bar";
+import { theme } from "../../global/theme";
+import Pix from "../../assets/svg/pix.svg";
+import styles from "./styles";
 
 export function SignIn() {
     const [username, setUsername] = useState("");
@@ -50,7 +51,7 @@ export function SignIn() {
         setTimeout(() => {
             setIsLoading(false)
             navigation.navigate('Home' as never);
-        }, 2000)
+        }, theme.animations.time)
     }
 
     function forgotPassword() {

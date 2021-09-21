@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
         fontSize:18
     },
     wrapperGoBack:{
-        marginBottom:12
+        marginVertical:22,
+        marginBottom:32
     },
     buttonGoBack:{
         flexDirection:"row", 

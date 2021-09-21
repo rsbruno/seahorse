@@ -1,22 +1,30 @@
-import { FontAwesome } from "@expo/vector-icons";
-import React from "react"
-import { View, Text, TouchableOpacity } from "react-native";
+import React, { ReactNode, useState } from "react"
+import { Text, TouchableOpacity, ActivityIndicator } from "react-native";
+
 import { theme } from "../../global/theme";
 import Gradient from "../Gradient";
 import styles from "./styles";
 
 type CardGridProps = {
-    children: string,
+    children: ReactNode,
     label?: string,
     toggleModal: () => void;
+    isloading?: boolean
 }
 
 export function CardGrid({ children, label, toggleModal }: CardGridProps) {
+    const [isLoading, setIsLoading] = useState(false)
     return (
         <TouchableOpacity
             style={styles.wrapperCard}
             activeOpacity={.8}
-            onPress={()=>{toggleModal()}}
+            onPress={() => {
+                setIsLoading(true)
+                setTimeout(() => {
+                    setIsLoading(false)
+                    toggleModal()
+                }, theme.animations.time);
+            }}
         >
             <Gradient colors={[
                 theme.colors.red,
@@ -24,7 +32,13 @@ export function CardGrid({ children, label, toggleModal }: CardGridProps) {
             ]}
                 style={styles.customCardGradient}
             >
-                {children}
+                {isLoading
+                    ? <ActivityIndicator
+                        size="large"
+                        color={theme.colors.backgroundLight}
+                    />
+                    : children
+                }
                 <Text style={styles.labelCard}>{label}</Text>
 
             </Gradient>

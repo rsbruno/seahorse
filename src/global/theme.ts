@@ -3,7 +3,7 @@ export const theme = {
         primary: "#E51C44",
         red:'#F70C22',
         backgroundLight:"#fafafa",
-        overlay: "rgba(0,0,0,0.7)",
+        overlay: "rgba(1,7,49,0.7)",
         textHightLight: "#DDE3F0",
         textLight: "#ABB1CC",
     },
@@ -11,5 +11,8 @@ export const theme = {
         title400: "Rajdhani_400Regular",
         title500: "Rajdhani_500Medium",
         title700: "Rajdhani_700Bold"
+    },
+    animations:{
+        time:1800
     }
 }

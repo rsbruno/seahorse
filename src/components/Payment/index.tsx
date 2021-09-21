@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+
+import { MaterialIcons } from '@expo/vector-icons';
 import { theme } from '../../global/theme';
 import styles from './styles'
-import { MaterialIcons } from '@expo/vector-icons';
 
 type Payment = {
     status: boolean,
@@ -44,9 +45,7 @@ export function Payment({payment}:PaymentProps) {
                             {payment.date}
                         </Text>
                     </Text>
-
                 </View>
-
             </View>
         </View>
     );

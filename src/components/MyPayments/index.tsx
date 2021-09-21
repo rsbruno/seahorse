@@ -1,10 +1,9 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import styles from './styles'
 
-import { theme } from '../../global/theme';
-import { Payment } from '../Payment';
 import payments from '../../utils/payments.json'
+import { Payment } from '../Payment';
+import styles from './styles'
 
 export function MyPayments() {
     return (
