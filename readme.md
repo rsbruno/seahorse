@@ -15,7 +15,6 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
 Para executar o MyBank, siga estas etapas:
 
-Linux e macOS:
 ```
 yarn start 
 ```
