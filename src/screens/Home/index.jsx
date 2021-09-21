@@ -191,9 +191,7 @@ export function Home() {
             </View>
             <CustomModal visible={modalVisbility}>
                 <View style={styles.wrapperContentModal}>
-                    {/* Esta função devolve um component */}
                     {ModalContent(1)}
-
                     <View style={styles.containerButtonModal}>
                         <ButtonRedWithText
                             label="Fechar"
