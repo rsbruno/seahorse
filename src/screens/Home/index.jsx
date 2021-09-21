@@ -1,5 +1,5 @@
-import React, { useState, ReactNode,useEffect } from "react";
-import { View, Text, SafeAreaView, Image, Touchable, TouchableOpacity } from "react-native"
+import React, { useState, ReactNode, useEffect } from "react";
+import { View, Text, SafeAreaView, Image, Touchable, TouchableOpacity, StatusBar } from "react-native"
 import Gradient from "../../components/Gradient";
 import { theme } from "../../global/theme";
 import styles from "./styles";
@@ -23,6 +23,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { MyPix } from "../../components/MyPix";
 import { useNavigation } from "@react-navigation/core";
 import { useAuth } from "../../contexts/auth";
+// import { StatusBar } from "expo-status-bar"
 
 
 
@@ -31,8 +32,8 @@ export function Home() {
     const [modalVisbility, setModalVisibility] = useState(false)
     const [screen, setScreen] = useState(1);
     const navigation = useNavigation();
-    const {user} = useAuth();
-    const [name,setName] = useState(user.username || "")
+    const { user } = useAuth();
+    const [name, setName] = useState(user.username || "")
 
     function ModalContent() {
         switch (screen) {
@@ -52,138 +53,142 @@ export function Home() {
     }
 
     return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.wrapperAll}>
-                <View style={styles.wrapperGoBack}>
-                    <TouchableOpacity
-                        style={styles.buttonGoBack}
-                        activeOpacity={.4}
-                        onPress={() => {
-                            if (navigation.canGoBack())
-                                navigation.goBack()
-                        }}
-                    >
-                        <MaterialIcons
-                            name="arrow-back-ios"
-                            size={24}
-                            color="black"
-                        />
-                        <Text style={styles.textGoBack}>voltar</Text>
-                    </TouchableOpacity>
+        <>
+            <StatusBar
+                hidden
+            />
+            <View style={styles.container}>
+                <View style={styles.wrapperAll}>
+                    <View style={styles.wrapperGoBack}>
+                        <TouchableOpacity
+                            style={styles.buttonGoBack}
+                            activeOpacity={.4}
+                            onPress={() => {
+                                if (navigation.canGoBack())
+                                    navigation.goBack()
+                            }}
+                        >
+                            <MaterialIcons
+                                name="arrow-back-ios"
+                                size={24}
+                                color="black"
+                            />
+                            <Text style={styles.textGoBack}>voltar</Text>
+                        </TouchableOpacity>
 
-                </View>
-                <View style={styles.wrapperUser}>
-                    <View>
-                        <Text style={styles.textWelcome}>
-                            Olá,{"\n"}
-                            <Text style={styles.textName}>{name}</Text>
-                        </Text>
+                    </View>
+                    <View style={styles.wrapperUser}>
+                        <View>
+                            <Text style={styles.textWelcome}>
+                                Olá,{"\n"}
+                                <Text style={styles.textName}>{name}</Text>
+                            </Text>
+                        </View>
+
+                        <View style={styles.wrapperAvatar}>
+                            <Gradient colors={[
+                                theme.colors.red,
+                                theme.colors.primary,
+                            ]}
+                                style={styles.customGradient}
+                            >
+                                <View style={styles.contentAvatar}>
+                                    <Image
+                                        source={avatar}
+                                        style={styles.imageAvatar}
+                                    />
+                                </View>
+                            </Gradient>
+                        </View>
                     </View>
 
-                    <View style={styles.wrapperAvatar}>
-                        <Gradient colors={[
-                            theme.colors.red,
-                            theme.colors.primary,
-                        ]}
-                            style={styles.customGradient}
-                        >
-                            <View style={styles.contentAvatar}>
-                                <Image
-                                    source={avatar}
-                                    style={styles.imageAvatar}
+                    <View style={styles.wrapperGrid}>
+
+                        <View style={styles.wrapperCards}>
+                            <CardGrid
+                                label="Meus Dados"
+                                toggleModal={() => {
+                                    setScreen(1)
+                                    setModalVisibility(true)
+                                }}
+                            >
+                                <FontAwesome
+                                    name="id-card-o"
+                                    size={sizeIcons}
+                                    color={theme.colors.backgroundLight} />
+                            </CardGrid>
+                            <CardGrid
+                                label="Meus Cartões"
+                                toggleModal={() => {
+                                    setScreen(2)
+                                    setModalVisibility(true)
+                                }}
+                            >
+                                <Ionicons
+                                    name="ios-card-outline"
+                                    size={sizeIcons}
+                                    color={theme.colors.backgroundLight} />
+                            </CardGrid>
+                        </View>
+
+                        <View style={styles.wrapperCards}>
+                            <CardGrid
+                                label="Fazer Pix"
+                                toggleModal={() => {
+                                    setScreen(3)
+                                    setModalVisibility(true)
+                                }}
+                            >
+                                <Pix
+                                    width={sizeIcons}
+                                    height={sizeIcons}
                                 />
-                            </View>
-                        </Gradient>
+                            </CardGrid>
+                            <CardGrid
+                                label="Transferências"
+                                toggleModal={() => {
+                                    setScreen(4)
+                                    setModalVisibility(true)
+                                }}
+                            >
+                                <Image
+                                    source={transfers}
+                                    style={styles.customImageCards}
+                                />
+                            </CardGrid>
+                        </View>
+
+                        <View style={styles.wrapperCards}>
+                            <CardGrid
+                                label="Pagamentos"
+                                toggleModal={() => {
+                                    setScreen(5)
+                                    setModalVisibility(true)
+                                }}
+                            >
+                                <Image
+                                    source={barcode}
+                                    style={styles.customImageCards}
+                                />
+                            </CardGrid>
+                            <CardGrid
+                                label="Minhas Faturas"
+                                toggleModal={() => {
+                                    setScreen(6)
+                                    setModalVisibility(true)
+                                }}
+                            >
+                                <Ionicons
+                                    name="newspaper-outline"
+                                    size={sizeIcons}
+                                    color={theme.colors.backgroundLight} />
+                            </CardGrid>
+                        </View>
+
+
                     </View>
-                </View>
-
-                <View style={styles.wrapperGrid}>
-
-                    <View style={styles.wrapperCards}>
-                        <CardGrid
-                            label="Meus Dados"
-                            toggleModal={() => {
-                                setScreen(1)
-                                setModalVisibility(true)
-                            }}
-                        >
-                            <FontAwesome
-                                name="id-card-o"
-                                size={sizeIcons}
-                                color={theme.colors.backgroundLight} />
-                        </CardGrid>
-                        <CardGrid
-                            label="Meus Cartões"
-                            toggleModal={() => {
-                                setScreen(2)
-                                setModalVisibility(true)
-                            }}
-                        >
-                            <Ionicons
-                                name="ios-card-outline"
-                                size={sizeIcons}
-                                color={theme.colors.backgroundLight} />
-                        </CardGrid>
-                    </View>
-
-                    <View style={styles.wrapperCards}>
-                        <CardGrid
-                            label="Fazer Pix"
-                            toggleModal={() => {
-                                setScreen(3)
-                                setModalVisibility(true)
-                            }}
-                        >
-                            <Pix
-                                width={sizeIcons}
-                                height={sizeIcons}
-                            />
-                        </CardGrid>
-                        <CardGrid
-                            label="Transferências"
-                            toggleModal={() => {
-                                setScreen(4)
-                                setModalVisibility(true)
-                            }}
-                        >
-                            <Image
-                                source={transfers}
-                                style={styles.customImageCards}
-                            />
-                        </CardGrid>
-                    </View>
-
-                    <View style={styles.wrapperCards}>
-                        <CardGrid
-                            label="Pagamentos"
-                            toggleModal={() => {
-                                setScreen(5)
-                                setModalVisibility(true)
-                            }}
-                        >
-                            <Image
-                                source={barcode}
-                                style={styles.customImageCards}
-                            />
-                        </CardGrid>
-                        <CardGrid
-                            label="Minhas Faturas"
-                            toggleModal={() => {
-                                setScreen(6)
-                                setModalVisibility(true)
-                            }}
-                        >
-                            <Ionicons
-                                name="newspaper-outline"
-                                size={sizeIcons}
-                                color={theme.colors.backgroundLight} />
-                        </CardGrid>
-                    </View>
-
-
                 </View>
             </View>
-
             <CustomModal visible={modalVisbility}>
                 <View style={styles.wrapperContentModal}>
                     {/* Esta função devolve um component */}
@@ -199,6 +204,6 @@ export function Home() {
                 </View>
             </CustomModal>
 
-        </SafeAreaView>
+        </>
     );
 }
