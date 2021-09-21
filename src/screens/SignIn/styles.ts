@@ -2,6 +2,12 @@ import { StyleSheet } from "react-native"
 import { theme } from "../../global/theme";
 
 const styles = StyleSheet.create({
+    logo:{
+        height: 60,
+        resizeMode:"contain",
+        marginBottom:25,
+        marginTop:"50%"
+    },
     descriptionCard:{
         color: theme.colors.textHightLight,
         textAlign:"center",
@@ -59,7 +65,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: "flex-start",
         alignItems: 'center',
         paddingHorizontal: 32
     },

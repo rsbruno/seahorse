@@ -1,6 +1,6 @@
 import React from "react"
 import { useState } from "react";
-import { View, Text, ActivityIndicator, TouchableOpacity, Image } from "react-native"
+import { View, Text, ActivityIndicator, TouchableOpacity, Image, Keyboard } from "react-native"
 import ButtonWithText from "../../components/ButtonWithText";
 import Gradient from "../../components/Gradient";
 import CustomTextInput from "../../components/Inputs/Text";
@@ -21,6 +21,9 @@ import { SimpleCard } from "../../components/SimpleCard";
 
 import { useNavigation } from "@react-navigation/core";
 
+import logo from "../../assets/png/logo.png"
+import { useEffect } from "react";
+
 export function SignIn() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -28,14 +31,24 @@ export function SignIn() {
     const [isLoading, setIsLoading] = useState(false);
     const [isForgot, setIsForgot] = useState(true);
     const [visibleModal, setVisibleModal] = useState(false);
+    const [keyboardIsOpen, setKeyboardIsOpen] = useState(false);
     const { setUser } = useAuth();
     const navigation = useNavigation()
+
+    useEffect(() => {
+        Keyboard.addListener('keyboardDidShow', () => {
+            setKeyboardIsOpen(true)
+        });
+        Keyboard.addListener('keyboardDidHide', () => {
+            setKeyboardIsOpen(false)
+        });
+    }, [])
 
     function handleLogin() {
         setUser({ id: "1", username })
         setIsLoading(true)
-        setTimeout(() => { 
-            setIsLoading(false) 
+        setTimeout(() => {
+            setIsLoading(false)
             navigation.navigate('Home' as never);
         }, 2000)
     }
@@ -49,6 +62,10 @@ export function SignIn() {
         <>
             <Gradient colors={['#F70C22', '#E51C44']}>
                 <View style={styles.container}>
+                    <Image
+                        source={logo}
+                        style={styles.logo}
+                    />
                     <CustomTextInput
                         placeholder="usuário"
                         onChangeText={(e) => { setUsername(e) }}
@@ -84,17 +101,21 @@ export function SignIn() {
                     </ButtonWithText>
                 </View>
 
-                <View style={styles.footerCards}>
-                    <SimpleCard title="Pix">
-                        <Pix width={55} height={55} />
-                    </SimpleCard>
-                    <SimpleCard title="Pagamentos">
-                        <Image source={Barcode}
-                            style={{ width: 55, height: 55 }}
-                        />
-                    </SimpleCard>
-
-                </View>
+                {!keyboardIsOpen
+                    ? <>
+                        <View style={styles.footerCards}>
+                            <SimpleCard title="Pix">
+                                <Pix width={55} height={55} />
+                            </SimpleCard>
+                            <SimpleCard title="Pagamentos">
+                                <Image source={Barcode}
+                                    style={{ width: 55, height: 55 }}
+                                />
+                            </SimpleCard>
+                        </View>
+                    </>
+                    : <></>
+                }
 
                 <CustomModal visible={visibleModal}>
                     <View style={styles.wrapperForgotModal}>
